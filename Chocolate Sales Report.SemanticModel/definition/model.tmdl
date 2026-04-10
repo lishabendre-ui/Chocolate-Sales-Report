@@ -18,6 +18,7 @@ ref table dim_salesperson
 ref table dim_products
 ref table fact_sales
 ref table fact_targets
+ref table Calendar
 
 ref cultureInfo en-US
 

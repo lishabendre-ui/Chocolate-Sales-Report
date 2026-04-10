@@ -1,0 +1,171 @@
+table Calendar
+	lineageTag: 328d9a37-71a2-4348-91d4-72577a93745c
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: General Date
+		lineageTag: 857218ce-a271-464a-984d-c689ddf761fb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: 3360e5c8-2b5f-416a-8068-9d0d57903fdd
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNo
+		formatString: 0
+		lineageTag: 9161efe7-e2e0-4436-93b3-104ea3337c5f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [MonthNo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: f16a8a31-cb50-4823-88ce-7cc8624946da
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+		sortByColumn: MonthNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthShort
+		lineageTag: 56cc0298-8d3c-4907-892a-4c6409aecd68
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MonthShort]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: 334b03e3-3377-4396-a0ed-04769917e045
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarterNo
+		formatString: 0
+		lineageTag: 4764d41a-172d-438f-8d88-49c6ef722ac9
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [QuarterNo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekNo
+		formatString: 0
+		lineageTag: ef35d131-70d7-468c-8de0-a1e98097d74a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [WeekNo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		formatString: 0
+		lineageTag: 1ac8f961-4eb5-4fdd-90e7-a693c1c8f3d7
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Day]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayName
+		lineageTag: 203dcada-22fd-478b-bbb3-42044fbe4adc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DayName]
+		sortByColumn: DayOfWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek
+		formatString: 0
+		lineageTag: 70eba7a3-a609-4e7c-907f-3dc76dd97426
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DayOfWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsWeekend
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ecedd28d-e0b5-499c-91ef-7ddef59f3a5e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IsWeekend]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		lineageTag: 958bd244-8431-47ee-91c1-af5aa6845458
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [YearMonth]
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalYear
+		lineageTag: 688df64c-4e91-42b2-bff7-224779442692
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [FiscalYear]
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Year Hierarchy'
+		lineageTag: 36a68565-e097-476f-80f8-ef379931c020
+
+		level Year
+			lineageTag: f94c9c3d-b22c-43ac-914b-5ff9d3683b36
+			column: Year
+
+		level Quarter
+			lineageTag: 38d0e2a0-7985-4077-bf0f-1f1e18ba5dac
+			column: Quarter
+
+		level Month
+			lineageTag: 5ecf0614-660e-48f2-8dbe-f4adec010f26
+			column: Month
+
+		level Day
+			lineageTag: c3b0929b-a642-476a-a9fe-2ab09daa885b
+			column: Day
+
+	partition Calendar = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS(
+				    CALENDAR(
+				        DATE(YEAR(MIN(fact_sales[Date])), 1, 1),
+				        DATE(YEAR(MAX(fact_sales[Date])), 12, 31)
+				    ),
+				    "Year",       YEAR([Date]),
+				    "MonthNo",    MONTH([Date]),
+				    "Month",      FORMAT([Date], "MMMM"),
+				    "MonthShort", FORMAT([Date], "MMM"),
+				    "Quarter",    "Q" & QUARTER([Date]),
+				    "QuarterNo",  QUARTER([Date]),
+				    "WeekNo",     WEEKNUM([Date]),
+				    "Day",        DAY([Date]),
+				    "DayName",    FORMAT([Date], "DDDD"),
+				    "DayOfWeek",  WEEKDAY([Date], 2),
+				    "IsWeekend",  IF(WEEKDAY([Date], 2) >= 6, TRUE(), FALSE()),
+				    "YearMonth",  FORMAT([Date], "YYYY-MM"),
+				    "FiscalYear", "FY" & IF(MONTH([Date]) >= 7, YEAR([Date]) + 1, YEAR([Date])))
+
+	annotation PBI_Id = 5aade61661d247e2990260a49ac63046
+
