@@ -1,0 +1,59 @@
+table fact_targets
+	lineageTag: 6b07e6c8-2616-4c83-b092-6fe65292dcf4
+
+	column SP_ID
+		dataType: string
+		lineageTag: 59c39d21-8e4c-41fb-89cf-38a0dbc4a85d
+		summarizeBy: none
+		sourceColumn: SP_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 7810d03d-f1a2-478e-9b0b-e31ba8970fdb
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e512df6-a51d-47a6-a3f1-8bf48a3b7191
+		summarizeBy: sum
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Target_Amount
+		dataType: int64
+		formatString: 0
+		lineageTag: c3407288-f2f5-436d-ac4e-47cd36b98a3c
+		summarizeBy: sum
+		sourceColumn: Target_Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Target_Boxes
+		dataType: int64
+		formatString: 0
+		lineageTag: 115d9235-88b4-4a1d-b33b-77c94fe88fb7
+		summarizeBy: sum
+		sourceColumn: Target_Boxes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_targets = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\anike\Documents\GitHub\Data Sets\Chocolate Sales Report\fact_targets.csv"),[Delimiter=",", Columns=5, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"SP_ID", type text}, {"Year", Int64.Type}, {"Month", Int64.Type}, {"Target_Amount", Int64.Type}, {"Target_Boxes", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

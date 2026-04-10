@@ -1,0 +1,68 @@
+table dim_salesperson
+	lineageTag: c3366492-6fd5-4c58-aea5-a6967de01bc4
+
+	column SP_ID
+		dataType: string
+		lineageTag: 8dde748b-3e30-4743-9b80-58aa5ad056b5
+		summarizeBy: none
+		sourceColumn: SP_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales_Person
+		dataType: string
+		lineageTag: 73eccec5-cbc9-4c66-abbb-27996e1415f1
+		summarizeBy: none
+		sourceColumn: Sales_Person
+
+		annotation SummarizationSetBy = Automatic
+
+	column Team
+		dataType: string
+		lineageTag: c7c01140-bbd0-43e9-896d-67ba814a9b92
+		summarizeBy: none
+		sourceColumn: Team
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 36bcecca-59f9-4076-9db8-3a4ccaa4f7b5
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column Manager
+		dataType: string
+		lineageTag: 9d78b57c-a973-490c-bb52-1d92d997a068
+		summarizeBy: none
+		sourceColumn: Manager
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region_Group
+		dataType: string
+		lineageTag: f609fa1f-0ce5-495d-8235-2015076288fe
+		summarizeBy: none
+		sourceColumn: Region_Group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_salesperson = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\anike\Documents\GitHub\Data Sets\Chocolate Sales Report\dim_people.csv"),[Delimiter=",", Columns=6, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"SP_ID", type text}, {"Sales_Person", type text}, {"Team", type text}, {"Location", type text}, {"Manager", type text}, {"Region_Group", type text}})
+				in
+				    #"Changed Type1"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

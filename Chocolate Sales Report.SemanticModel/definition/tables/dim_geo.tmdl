@@ -1,0 +1,63 @@
+table dim_geo
+	lineageTag: 17c682cd-cfbe-47ee-8bcc-04f4708aa7ac
+
+	column Geo_ID
+		dataType: string
+		lineageTag: d86cc53a-5588-4732-8922-eefa0675af32
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: Geo_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 1874e23d-c46c-4da8-8c38-b7e616e4fb1e
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: e4b5dab4-7e8d-4e9e-bb1a-5cce650cd557
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 34d0358f-bee5-4f00-afd2-a14067470307
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sub_Region
+		dataType: string
+		lineageTag: 132686f1-9a12-4369-b3ba-e7771682fb0b
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: Sub_Region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_geo = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\anike\Documents\GitHub\Data Sets\Chocolate Sales Report\dim_geo.csv"),[Delimiter=",", Columns=5, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Geo_ID", type text}, {"Region", type text}, {"Country", type text}, {"City", type text}, {"Sub_Region", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

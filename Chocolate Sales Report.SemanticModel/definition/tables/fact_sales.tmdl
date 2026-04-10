@@ -1,0 +1,120 @@
+table fact_sales
+	lineageTag: 903815d8-f08c-4c4d-a2b7-c97090bbbc7b
+
+	column Sale_ID
+		dataType: string
+		lineageTag: b99a4ba1-b3a4-48f1-8f5c-a9a7486ee3b8
+		summarizeBy: none
+		sourceColumn: Sale_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2523f538-b4cb-496c-9a28-821dd59017c2
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Amount
+		dataType: int64
+		formatString: 0
+		lineageTag: 3be00daf-3269-43e1-8209-9ca67e4e124e
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Boxes
+		dataType: int64
+		formatString: 0
+		lineageTag: 6bf8fa9e-08e5-41ed-8f14-5c37968cf90b
+		summarizeBy: sum
+		sourceColumn: Boxes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cost
+		dataType: int64
+		formatString: 0
+		lineageTag: b89361f8-440d-4a3b-9fc9-5b596d28ad67
+		summarizeBy: sum
+		sourceColumn: Cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column Profit
+		dataType: int64
+		formatString: 0
+		lineageTag: d8a06b4f-c7c5-4639-b5c6-df00bc135682
+		summarizeBy: sum
+		sourceColumn: Profit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customers
+		dataType: int64
+		formatString: 0
+		lineageTag: c55d3b08-58cb-46ae-bd16-a3dede192b31
+		summarizeBy: sum
+		sourceColumn: Customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column Units_Returned
+		dataType: int64
+		formatString: 0
+		lineageTag: e5fe1c0b-e490-4b43-8fa7-cebe8234eb5c
+		summarizeBy: sum
+		sourceColumn: Units_Returned
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_ID
+		dataType: string
+		lineageTag: 37f28700-ddc4-445d-a86f-f75bc70bce7e
+		summarizeBy: none
+		sourceColumn: Product_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Geo_ID
+		dataType: string
+		lineageTag: 0dc564ff-105a-46fa-a9cc-372f5b9b17c5
+		summarizeBy: none
+		sourceColumn: Geo_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SP_ID
+		dataType: string
+		lineageTag: d559ad5b-190d-4b31-a98e-644fbc24ca51
+		summarizeBy: none
+		sourceColumn: SP_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer_ID
+		dataType: string
+		lineageTag: 901aa845-c551-447b-9db8-fc3f3c77f503
+		summarizeBy: none
+		sourceColumn: Customer_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_sales = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\anike\Documents\GitHub\Data Sets\Chocolate Sales Report\fact_sales.csv"),[Delimiter=",", Columns=12, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Sale_ID", type text}, {"Date", type date}, {"Amount", Int64.Type}, {"Boxes", Int64.Type}, {"Cost", Int64.Type}, {"Profit", Int64.Type}, {"Customers", Int64.Type}, {"Units_Returned", Int64.Type}, {"Product_ID", type text}, {"Geo_ID", type text}, {"SP_ID", type text}, {"Customer_ID", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

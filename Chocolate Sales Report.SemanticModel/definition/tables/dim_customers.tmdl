@@ -1,0 +1,66 @@
+table dim_customers
+	lineageTag: 100de76f-949d-4560-bed3-3691ef7945e3
+
+	column Customer_ID
+		dataType: string
+		lineageTag: 7463272b-c3c4-414a-9f76-beccf2781989
+		summarizeBy: none
+		sourceColumn: Customer_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer_Name
+		dataType: string
+		lineageTag: b5ba1f89-acd1-4f19-b14d-d5195ff7f92a
+		summarizeBy: none
+		sourceColumn: Customer_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segment
+		dataType: string
+		lineageTag: cd731e80-6f2a-4ea8-a337-f29a88c128e3
+		summarizeBy: none
+		sourceColumn: Segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		lineageTag: cc1a764e-4957-468c-b3e5-0b0c1e325b46
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column Join_Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 34572128-100d-4916-851b-2280d2cbeffd
+		summarizeBy: none
+		sourceColumn: Join_Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Loyalty_Level
+		dataType: string
+		lineageTag: b8db5127-cf06-4eb4-924d-590afe6469f7
+		summarizeBy: none
+		sourceColumn: Loyalty_Level
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_customers = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\anike\Documents\GitHub\Data Sets\Chocolate Sales Report\dim_customers.csv"),[Delimiter=",", Columns=6, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Customer_ID", type text}, {"Customer_Name", type text}, {"Segment", type text}, {"Email", type text}, {"Join_Date", type date}, {"Loyalty_Level", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

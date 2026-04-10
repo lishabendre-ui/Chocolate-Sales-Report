@@ -1,0 +1,20 @@
+relationship AutoDetected_11901dad-a174-4a8e-be2b-14e3551e87f4
+	fromColumn: fact_sales.Customer_ID
+	toColumn: dim_customers.Customer_ID
+
+relationship AutoDetected_1bba37a6-3247-4cd0-90d2-322e9a569e16
+	fromColumn: fact_sales.Product_ID
+	toColumn: dim_products.Product_ID
+
+relationship AutoDetected_41155b62-ecdb-4131-9647-578cc123c607
+	fromColumn: fact_sales.Geo_ID
+	toColumn: dim_geo.Geo_ID
+
+relationship AutoDetected_5baf4d22-43c0-44af-957a-de0fe4a93950
+	fromColumn: fact_sales.SP_ID
+	toColumn: dim_salesperson.SP_ID
+
+relationship AutoDetected_7127f002-d908-42b5-b653-04eab8f7006f
+	fromColumn: fact_targets.SP_ID
+	toColumn: dim_salesperson.SP_ID
+
