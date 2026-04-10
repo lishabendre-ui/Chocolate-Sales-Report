@@ -10,7 +10,7 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_ProTooling = ["DevMode"]
 
-annotation PBI_QueryOrder = ["dim_customers","dim_geo","dim_salesperson","dim_products","fact_sales","fact_targets"]
+annotation PBI_QueryOrder = ["dim_customers","dim_geo","dim_salesperson","dim_products","fact_sales","fact_targets","MinSalesThreshold"]
 
 ref table dim_customers
 ref table dim_geo

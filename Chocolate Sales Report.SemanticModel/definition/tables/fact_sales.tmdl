@@ -21,7 +21,7 @@ table fact_sales
 		annotation UnderlyingDateTimeDataType = Date
 
 	column Amount
-		dataType: int64
+		dataType: double
 		formatString: 0
 		lineageTag: 3be00daf-3269-43e1-8209-9ca67e4e124e
 		summarizeBy: sum
@@ -39,7 +39,7 @@ table fact_sales
 		annotation SummarizationSetBy = Automatic
 
 	column Cost
-		dataType: int64
+		dataType: double
 		formatString: 0
 		lineageTag: b89361f8-440d-4a3b-9fc9-5b596d28ad67
 		summarizeBy: sum
@@ -48,7 +48,7 @@ table fact_sales
 		annotation SummarizationSetBy = Automatic
 
 	column Profit
-		dataType: int64
+		dataType: double
 		formatString: 0
 		lineageTag: d8a06b4f-c7c5-4639-b5c6-df00bc135682
 		summarizeBy: sum
@@ -106,15 +106,31 @@ table fact_sales
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Profit Margin %'
+		dataType: string
+		lineageTag: 174d2b96-113d-463d-a0dc-4f321ef2ebf0
+		summarizeBy: none
+		sourceColumn: Profit Margin %
+
+		annotation SummarizationSetBy = Automatic
+
 	partition fact_sales = m
 		mode: import
 		source =
 				let
 				    Source = Csv.Document(File.Contents("C:\Users\anike\Documents\GitHub\Data Sets\Chocolate Sales Report\fact_sales.csv"),[Delimiter=",", Columns=12, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Sale_ID", type text}, {"Date", type date}, {"Amount", Int64.Type}, {"Boxes", Int64.Type}, {"Cost", Int64.Type}, {"Profit", Int64.Type}, {"Customers", Int64.Type}, {"Units_Returned", Int64.Type}, {"Product_ID", type text}, {"Geo_ID", type text}, {"SP_ID", type text}, {"Customer_ID", type text}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Sale_ID", type text}, {"Date", type date}, {"Amount", type number}, {"Boxes", Int64.Type}, {"Cost", type number}, {"Profit", type number}, {"Customers", Int64.Type}, {"Units_Returned", Int64.Type}, {"Product_ID", type text}, {"Geo_ID", type text}, {"SP_ID", type text}, {"Customer_ID", type text}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Profit Margin %", each [Profit]/[Amount]*100),
+				    #"Filtered Rows" = Table.SelectRows(#"Added Custom", each true),
+				    #"Removed Duplicates" = Table.Distinct(#"Filtered Rows", {"Sale_ID"}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Removed Duplicates", each [Amount] >= MinSalesThreshold),
+				    #"Filtered Rows2" = Table.SelectRows(#"Filtered Rows1", each [Amount] <> null and [Amount] <> ""),
+				    #"Filtered Rows3" = Table.SelectRows(#"Filtered Rows2", each [Amount] >= MinSalesThreshold)
 				in
-				    #"Changed Type"
+				    #"Filtered Rows3"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

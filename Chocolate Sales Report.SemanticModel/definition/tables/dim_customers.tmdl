@@ -52,15 +52,45 @@ table dim_customers
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Join_Year '
+		dataType: int64
+		formatString: 0
+		lineageTag: 7cfd52da-c24c-4548-9168-4135452fb3f4
+		summarizeBy: none
+		sourceColumn: "Join_Year "
+
+		annotation SummarizationSetBy = Automatic
+
+	column Loyalty_Score
+		dataType: string
+		lineageTag: a4820ace-4ca1-4c27-845d-0ba536a90594
+		summarizeBy: none
+		sourceColumn: Loyalty_Score
+
+		annotation SummarizationSetBy = Automatic
+
 	partition dim_customers = m
 		mode: import
 		source =
 				let
 				    Source = Csv.Document(File.Contents("C:\Users\anike\Documents\GitHub\Data Sets\Chocolate Sales Report\dim_customers.csv"),[Delimiter=",", Columns=6, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Customer_ID", type text}, {"Customer_Name", type text}, {"Segment", type text}, {"Email", type text}, {"Join_Date", type date}, {"Loyalty_Level", type text}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Customer_ID", type text}, {"Customer_Name", type text}, {"Segment", type text}, {"Email", type text}, {"Join_Date", type date}, {"Loyalty_Level", type text}}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Changed Type", "Customer_Name", Splitter.SplitTextByEachDelimiter({" "}, QuoteStyle.Csv, false), {"Customer_Name.1", "Customer_Name.2"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Customer_Name.1", type text}, {"Customer_Name.2", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"Customer_Name.1", "First_Name"}, {"Customer_Name.2", "Last_Name"}}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Renamed Columns",{{"Join_Date", type date}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type2", "Join_Year ", each Date.Year([Join_Date])),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Added Custom",{{"Join_Year ", Int64.Type}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type3", each true),
+				    #"Added Conditional Column" = Table.AddColumn(#"Filtered Rows", "Loyalty_Score2", each if [Loyalty_Level] = "Platinum" then 4 else if [Loyalty_Level] = "Gold" then 3 else if [Loyalty_Level] = "Silver" then 2 else 1),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Added Conditional Column",{{"Loyalty_Score2", "Loyalty_Score"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns1",{"Customer_ID", "First_Name", "Last_Name", "Segment", "Email", "Join_Date", "Join_Year ", "Loyalty_Level", "Loyalty_Score"}),
+				    #"Merged Columns" = Table.CombineColumns(#"Reordered Columns",{"First_Name", "Last_Name"},Combiner.CombineTextByDelimiter(" ", QuoteStyle.None),"Customer_Name")
 				in
-				    #"Changed Type"
+				    #"Merged Columns"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

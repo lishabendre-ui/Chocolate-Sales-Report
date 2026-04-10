@@ -1,0 +1,7 @@
+expression MinSalesThreshold = 1000 meta [IsParameterQuery=true, Type="Number", IsParameterQueryRequired=true]
+	lineageTag: f195a201-576d-460f-b01a-15a6bda865fe
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Number
+
