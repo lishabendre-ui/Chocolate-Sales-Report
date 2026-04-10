@@ -1,6 +1,46 @@
 table fact_sales
 	lineageTag: 903815d8-f08c-4c4d-a2b7-c97090bbbc7b
 
+	measure 'Total Sales' = SUM(fact_sales[Amount])
+		displayFolder: Core DAX Measures
+		lineageTag: fa149bef-d873-4d83-902e-33f50fe1fd8f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Profit' = SUM(fact_sales[Profit])
+		displayFolder: Core DAX Measures
+		lineageTag: 9eb1a631-59ae-44e2-8146-c48903fbf78a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Profit Margin Per' = DIVIDE([Total Profit], [Total Sales], 0)
+		displayFolder: Core DAX Measures
+		lineageTag: bf7dff2e-7a6f-47b9-9b77-b3360953720e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Boxes' = SUM(fact_sales[Boxes])
+		formatString: 0
+		displayFolder: Core DAX Measures
+		lineageTag: 5eb5d769-3a54-4514-ad98-02b23fd125d7
+
+	measure 'Total Customers' = SUM(fact_sales[Customers])
+		formatString: 0
+		displayFolder: Core DAX Measures
+		lineageTag: 892ddc9a-d607-4d60-a9d3-117def08cdf0
+
+	measure 'Avg Sale Value' = AVERAGE(fact_sales[Amount])
+		displayFolder: Core DAX Measures
+		lineageTag: 79129c35-4799-4181-8455-61f602da547a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Return Rate %' = DIVIDE(SUM(fact_sales[Units_Returned]), [Total Boxes], 0)
+		displayFolder: Core DAX Measures
+		lineageTag: fedc1f7b-bbc3-4d73-9459-c7f0d778c5aa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Sale_ID
 		dataType: string
 		lineageTag: b99a4ba1-b3a4-48f1-8f5c-a9a7486ee3b8
@@ -106,11 +146,10 @@ table fact_sales
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Profit Margin %'
-		dataType: string
-		lineageTag: 174d2b96-113d-463d-a0dc-4f321ef2ebf0
-		summarizeBy: none
-		sourceColumn: Profit Margin %
+	column 'Profit Margin %' = DIVIDE(fact_sales[Profit],fact_sales[Amount],0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e8fe0272-78dc-4b4d-aee1-f8ef71f3c3d4
+		summarizeBy: sum
 
 		annotation SummarizationSetBy = Automatic
 
@@ -126,9 +165,10 @@ table fact_sales
 				    #"Removed Duplicates" = Table.Distinct(#"Filtered Rows", {"Sale_ID"}),
 				    #"Filtered Rows1" = Table.SelectRows(#"Removed Duplicates", each [Amount] >= MinSalesThreshold),
 				    #"Filtered Rows2" = Table.SelectRows(#"Filtered Rows1", each [Amount] <> null and [Amount] <> ""),
-				    #"Filtered Rows3" = Table.SelectRows(#"Filtered Rows2", each [Amount] >= MinSalesThreshold)
+				    #"Filtered Rows3" = Table.SelectRows(#"Filtered Rows2", each [Amount] >= MinSalesThreshold),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows3",{"Profit Margin %"})
 				in
-				    #"Filtered Rows3"
+				    #"Removed Columns"
 
 	annotation PBI_ResultType = Table
 

@@ -4,7 +4,7 @@ table Calendar
 
 	column Date
 		isKey
-		formatString: General Date
+		formatString: Long Date
 		lineageTag: 857218ce-a271-464a-984d-c689ddf761fb
 		summarizeBy: none
 		isNameInferred
@@ -15,7 +15,7 @@ table Calendar
 	column Year
 		formatString: 0
 		lineageTag: 3360e5c8-2b5f-416a-8068-9d0d57903fdd
-		summarizeBy: sum
+		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Year]
 
@@ -24,7 +24,7 @@ table Calendar
 	column MonthNo
 		formatString: 0
 		lineageTag: 9161efe7-e2e0-4436-93b3-104ea3337c5f
-		summarizeBy: sum
+		summarizeBy: none
 		isNameInferred
 		sourceColumn: [MonthNo]
 
@@ -58,7 +58,7 @@ table Calendar
 	column QuarterNo
 		formatString: 0
 		lineageTag: 4764d41a-172d-438f-8d88-49c6ef722ac9
-		summarizeBy: sum
+		summarizeBy: none
 		isNameInferred
 		sourceColumn: [QuarterNo]
 
@@ -67,7 +67,7 @@ table Calendar
 	column WeekNo
 		formatString: 0
 		lineageTag: ef35d131-70d7-468c-8de0-a1e98097d74a
-		summarizeBy: sum
+		summarizeBy: none
 		isNameInferred
 		sourceColumn: [WeekNo]
 
@@ -76,7 +76,7 @@ table Calendar
 	column Day
 		formatString: 0
 		lineageTag: 1ac8f961-4eb5-4fdd-90e7-a693c1c8f3d7
-		summarizeBy: sum
+		summarizeBy: none
 		isNameInferred
 		sourceColumn: [Day]
 
@@ -94,7 +94,7 @@ table Calendar
 	column DayOfWeek
 		formatString: 0
 		lineageTag: 70eba7a3-a609-4e7c-907f-3dc76dd97426
-		summarizeBy: sum
+		summarizeBy: none
 		isNameInferred
 		sourceColumn: [DayOfWeek]
 

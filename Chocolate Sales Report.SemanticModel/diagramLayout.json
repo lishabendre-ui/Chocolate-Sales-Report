@@ -4,14 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 350,
-        "y": 0
+        "x": 231,
+        "y": 41
       },
       "nodes": [
         {
           "location": {
             "x": 0,
-            "y": 686.5
+            "y": 801.25
           },
           "nodeIndex": "dim_customers",
           "nodeLineageTag": "100de76f-949d-4560-bed3-3691ef7945e3",
@@ -19,12 +19,12 @@
             "height": 224,
             "width": 234
           },
-          "zIndex": 1
+          "zIndex": 2
         },
         {
           "location": {
             "x": 154,
-            "y": 233.5
+            "y": 348.25
           },
           "nodeIndex": "dim_geo",
           "nodeLineageTag": "17c682cd-cfbe-47ee-8bcc-04f4708aa7ac",
@@ -37,7 +37,7 @@
         {
           "location": {
             "x": 485,
-            "y": 231.5
+            "y": 346.25
           },
           "nodeIndex": "dim_products",
           "nodeLineageTag": "da22ef5c-69d9-476f-846e-d9b2a0f27661",
@@ -50,7 +50,7 @@
         {
           "location": {
             "x": 379,
-            "y": 627.5
+            "y": 742.25
           },
           "nodeIndex": "fact_sales",
           "nodeLineageTag": "903815d8-f08c-4c4d-a2b7-c97090bbbc7b",
@@ -63,7 +63,7 @@
         {
           "location": {
             "x": 934,
-            "y": 229.5
+            "y": 344.25
           },
           "nodeIndex": "fact_targets",
           "nodeLineageTag": "6b07e6c8-2616-4c83-b092-6fe65292dcf4",
@@ -76,26 +76,27 @@
         {
           "location": {
             "x": 784,
-            "y": 608.5
+            "y": 723.25
           },
           "nodeIndex": "dim_salesperson",
           "size": {
             "height": 224,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 7
         },
         {
           "location": {
-            "x": 1218,
-            "y": 325.5
+            "x": 636,
+            "y": 1022.25
           },
           "nodeIndex": "Calendar",
+          "nodeLineageTag": "328d9a37-71a2-4348-91d4-72577a93745c",
           "size": {
             "height": 200,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 1
         }
       ],
       "name": "All tables",

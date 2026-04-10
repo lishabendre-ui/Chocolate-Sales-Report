@@ -18,3 +18,7 @@ relationship AutoDetected_7127f002-d908-42b5-b653-04eab8f7006f
 	fromColumn: fact_targets.SP_ID
 	toColumn: dim_salesperson.SP_ID
 
+relationship 538a3a56-130f-d7bf-5607-8b1088794b3a
+	fromColumn: fact_sales.Date
+	toColumn: Calendar.Date
+
