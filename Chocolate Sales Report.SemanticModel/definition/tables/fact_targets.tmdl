@@ -1,6 +1,36 @@
 table fact_targets
 	lineageTag: 6b07e6c8-2616-4c83-b092-6fe65292dcf4
 
+	measure 'Total Target' = SUM(fact_targets[Target_Amount])
+		formatString: 0
+		displayFolder: Target Analysis
+		lineageTag: 175144cf-adb4-4ef0-8293-30cd839f58a9
+
+	measure 'Sales Variance' = ```
+			
+			    [Total Sales]- [Total Target]
+			```
+		displayFolder: Target Analysis
+		lineageTag: e3825202-cc2e-4682-a96d-634565936eb7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Target Achivement %' = ```
+			
+			    DIVIDE([Total Sales],[Total Target],0)
+			```
+		displayFolder: Target Analysis
+		lineageTag: e79cc33a-d0e7-4b35-82a0-7419660f1b1d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'KPI Status' = ```
+			
+			    IF([Target Achivement %]>=1,"On Track",IF([Target Achivement %]>=0.85,"At Risk", "Behind"))
+			```
+		displayFolder: Target Analysis
+		lineageTag: e91079bb-28b5-48a8-9347-734d96513499
+
 	column SP_ID
 		dataType: string
 		lineageTag: 59c39d21-8e4c-41fb-89cf-38a0dbc4a85d
