@@ -4,14 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 81,
-        "y": 226
+        "x": 231,
+        "y": 217.1875
       },
       "nodes": [
         {
           "location": {
             "x": 0,
-            "y": 801.25
+            "y": 1231.5625
           },
           "nodeIndex": "dim_customers",
           "nodeLineageTag": "100de76f-949d-4560-bed3-3691ef7945e3",
@@ -24,7 +24,7 @@
         {
           "location": {
             "x": 154,
-            "y": 348.25
+            "y": 778.5625
           },
           "nodeIndex": "dim_geo",
           "nodeLineageTag": "17c682cd-cfbe-47ee-8bcc-04f4708aa7ac",
@@ -37,7 +37,7 @@
         {
           "location": {
             "x": 485,
-            "y": 346.25
+            "y": 776.5625
           },
           "nodeIndex": "dim_products",
           "nodeLineageTag": "da22ef5c-69d9-476f-846e-d9b2a0f27661",
@@ -50,7 +50,7 @@
         {
           "location": {
             "x": 379,
-            "y": 742.25
+            "y": 1172.5625
           },
           "nodeIndex": "fact_sales",
           "nodeLineageTag": "903815d8-f08c-4c4d-a2b7-c97090bbbc7b",
@@ -63,7 +63,7 @@
         {
           "location": {
             "x": 934,
-            "y": 344.25
+            "y": 774.5625
           },
           "nodeIndex": "fact_targets",
           "nodeLineageTag": "6b07e6c8-2616-4c83-b092-6fe65292dcf4",
@@ -76,7 +76,7 @@
         {
           "location": {
             "x": 784,
-            "y": 723.25
+            "y": 1153.5625
           },
           "nodeIndex": "dim_salesperson",
           "size": {
@@ -88,7 +88,7 @@
         {
           "location": {
             "x": 636,
-            "y": 1022.25
+            "y": 1452.5625
           },
           "nodeIndex": "Calendar",
           "nodeLineageTag": "328d9a37-71a2-4348-91d4-72577a93745c",
@@ -97,6 +97,19 @@
             "width": 234
           },
           "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 997,
+            "y": 217.1875
+          },
+          "nodeIndex": "Advance Calculate",
+          "nodeLineageTag": "7fa76590-81e2-460d-90e5-04864d244b2f",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",

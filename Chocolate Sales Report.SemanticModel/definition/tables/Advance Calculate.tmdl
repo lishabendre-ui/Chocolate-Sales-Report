@@ -1,0 +1,80 @@
+table 'Advance Calculate'
+	lineageTag: 7fa76590-81e2-460d-90e5-04864d244b2f
+
+	measure 'Bar Sales' = ```
+			
+			    CALCULATE([Total Sales],dim_products[Category]="Bars")
+			
+			    -- Sales for Bars category only--
+			```
+		lineageTag: bf16f453-e936-4db3-bea1-e091590b00d9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Americas Sales' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    dim_geo[Region] = "Americas"
+			)
+			
+			-- Sales in Americas region
+		lineageTag: 144168e5-d81a-4ae1-977a-380c7ff67be4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Top Product Sales' = ```
+			
+			     CALCULATE([Total Sales],TOPN(5,VALUES(dim_products[Product]),[Total Sales]))
+			
+			
+			-- Top N products sales (use with slicer))))
+			```
+		lineageTag: c5fc965e-42cf-4750-96d7-e42616890633
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales % of Total' =
+			
+			DIVIDE(
+			    [Total Sales],
+			    CALCULATE([Total Sales], ALL(dim_products)),
+			    0
+			)
+			
+			-- Sales % of total (for share analysis))
+		lineageTag: 331de5a4-5b65-4844-b362-adf535917c1e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Cumulative Sales' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    FILTER(
+			        ALL(Calendar[Date]),
+			        Calendar[Date] <= MAX(Calendar[Date])
+			    )
+			)
+			
+			
+			
+			-- Cumulative/Running Total Sales)
+		lineageTag: 41a4d9ea-3e03-4740-ab32-81fd45b1f342
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Value
+		lineageTag: 20f9a0f6-1b1f-45bd-a484-222061cd552a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Advance Calculate' = calculated
+		mode: import
+		source = {""}
+
+	annotation PBI_Id = 59a0cf78aaf54e88bf74e2b7c37f4dfc
+
