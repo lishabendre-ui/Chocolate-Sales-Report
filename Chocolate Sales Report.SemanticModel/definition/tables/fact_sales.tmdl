@@ -41,6 +41,62 @@ table fact_sales
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'YTD Sales' = TOTALYTD([Total Sales],'Calendar'[Date])
+		displayFolder: Core DAX Measures
+		lineageTag: ba8f9bd0-6186-4b0c-8e46-cfb89a59f263
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Last Year (same period)' = CALCULATE([Total Sales],SAMEPERIODLASTYEAR('Calendar'[Date]))
+		displayFolder: Core DAX Measures
+		lineageTag: 971d15f7-aa03-40d9-aa6b-87860b0e66f2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YoY Growth %' = DIVIDE([Total Sales]-fact_sales[Sales Last Year (same period)],fact_sales[Sales Last Year (same period)],0)
+		displayFolder: Core DAX Measures
+		lineageTag: d5cdb5c2-1165-43a0-b90d-c321ca092524
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MTD Sales' = TOTALMTD([Total Sales],'Calendar'[Date])
+		displayFolder: Core DAX Measures
+		lineageTag: 2530aa77-99a3-4e72-b1fe-f1370292b9fe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Previous Month Sales' =
+			
+			CALCULATE([Total Sales],DATEADD('Calendar'[Date],-1,MONTH))
+		displayFolder: Core DAX Measures
+		lineageTag: 8e8543cf-89fe-4445-b349-c6e224a4de7d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MoM Growth %' = ```
+			
+			    DIVIDE([Total Sales]- [Previous Month Sales],[Previous Month Sales],0)
+			```
+		displayFolder: Core DAX Measures
+		lineageTag: 7de6a4b6-724b-463d-a28f-efb87354ef1d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rolling 3M Avg' = ```
+			
+			    CALCULATE([Total Sales],DATESINPERIOD('Calendar'[Date],LASTDATE('Calendar'[Date]),-3,MONTH))/3
+			```
+		displayFolder: Core DAX Measures
+		lineageTag: aa09d96c-fd27-440e-950d-503d4ae02f84
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'QTD Sales' = TOTALQTD([Total Sales],'Calendar'[Date])
+		displayFolder: Core DAX Measures
+		lineageTag: f9917e14-01eb-40b3-8d1e-85749f84e4c8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Sale_ID
 		dataType: string
 		lineageTag: b99a4ba1-b3a4-48f1-8f5c-a9a7486ee3b8
