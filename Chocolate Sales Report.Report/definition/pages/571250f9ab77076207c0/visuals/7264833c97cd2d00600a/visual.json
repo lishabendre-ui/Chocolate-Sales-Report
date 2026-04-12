@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "582a5a9878501bcc7058",
+  "name": "7264833c97cd2d00600a",
   "position": {
-    "x": 513.88272510544641,
-    "y": -0.17857142857142905,
-    "z": 0,
-    "height": 181.25,
-    "width": 242.81129653401786,
-    "tabOrder": 4000
+    "x": 1023.75,
+    "y": 2.5,
+    "z": 9007,
+    "height": 211.25,
+    "width": 242.5,
+    "tabOrder": 9007
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "fact_sales"
                     }
                   },
-                  "Property": "Total Profit"
+                  "Property": "Profit Margin Per"
                 }
               },
-              "queryRef": "fact_sales.Total Profit",
-              "nativeQueryRef": "Total Profit"
+              "queryRef": "fact_sales.Profit Margin Per",
+              "nativeQueryRef": "Profit Margin Per"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "fact_sales"
                   }
                 },
-                "Property": "Total Profit"
+                "Property": "Profit Margin Per"
               }
             },
             "direction": "Descending"
@@ -281,6 +281,133 @@
             "id": "default"
           }
         }
+      ],
+      "referenceLabel": [
+        {
+          "properties": {
+            "backgroundColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1E3F4B'"
+                    }
+                  }
+                }
+              }
+            },
+            "rectangleRoundedCurveLeftTop": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_sales"
+                    }
+                  },
+                  "Property": "YoY Growth %"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "fact_sales.Profit Margin Per",
+            "id": "field-993b2809-5317-a58d-088b-9ffb1b37781d",
+            "order": 0
+          }
+        }
+      ],
+      "referenceLabelLayout": [
+        {
+          "properties": {
+            "labelSpace": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "horizontalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'left'"
+                }
+              }
+            },
+            "verticalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'middle'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "referenceLabelTitle": [
+        {
+          "properties": {
+            "titleFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fact_sales.Profit Margin Per"
+          }
+        }
+      ],
+      "referenceLabelValue": [
+        {
+          "properties": {
+            "valueFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fact_sales.Profit Margin Per"
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -314,8 +441,39 @@
             }
           }
         }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "34a3943c83b00070ea6b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_sales"
+              }
+            },
+            "Property": "Profit Margin Per"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

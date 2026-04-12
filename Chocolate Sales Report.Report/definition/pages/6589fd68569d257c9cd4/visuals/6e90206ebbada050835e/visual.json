@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "15b5a3c9ebbd951f57ce",
+  "name": "6e90206ebbada050835e",
   "position": {
-    "x": 756.69402163946427,
-    "y": -0.17857142857142905,
-    "z": 4000,
-    "height": 181.25,
-    "width": 242.81129653401786,
-    "tabOrder": 2000
+    "x": 270,
+    "y": 25,
+    "z": 12000,
+    "height": 156.25,
+    "width": 972.5,
+    "tabOrder": 16001
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,54 @@
                       "Entity": "fact_sales"
                     }
                   },
+                  "Property": "Total Sales"
+                }
+              },
+              "queryRef": "fact_sales.Total Sales",
+              "nativeQueryRef": "Total Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_sales"
+                    }
+                  },
+                  "Property": "Total Profit"
+                }
+              },
+              "queryRef": "fact_sales.Total Profit",
+              "nativeQueryRef": "Total Profit"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_sales"
+                    }
+                  },
                   "Property": "Profit Margin Per"
                 }
               },
               "queryRef": "fact_sales.Profit Margin Per",
               "nativeQueryRef": "Profit Margin Per",
+              "format": "0.00%;-0.00%;0.00%"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_sales"
+                    }
+                  },
+                  "Property": "YoY Growth %"
+                }
+              },
+              "queryRef": "fact_sales.YoY Growth %",
+              "nativeQueryRef": "YoY Growth %",
               "format": "0.00%;-0.00%;0.00%"
             }
           ]
@@ -43,7 +86,7 @@
                     "Entity": "fact_sales"
                   }
                 },
-                "Property": "Profit Margin Per"
+                "Property": "Total Sales"
               }
             },
             "direction": "Descending"
@@ -318,5 +361,65 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e315768be7de9bc39cc3",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_sales"
+              }
+            },
+            "Property": "Profit Margin Per"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "25bf61673cb4935a6743",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_sales"
+              }
+            },
+            "Property": "Total Sales"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0e7f81243690dee2399d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_sales"
+              }
+            },
+            "Property": "Total Profit"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4a18ac7079729b3600d5",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_sales"
+              }
+            },
+            "Property": "YoY Growth %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
