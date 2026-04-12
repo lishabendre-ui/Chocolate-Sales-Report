@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "571250f9ab77076207c0",
+  "displayName": "Product Analysis",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "pageBinding": {
+    "name": "5ddb2f9382214ee43da8",
+    "type": "Default",
+    "parameters": []
+  },
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "197L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

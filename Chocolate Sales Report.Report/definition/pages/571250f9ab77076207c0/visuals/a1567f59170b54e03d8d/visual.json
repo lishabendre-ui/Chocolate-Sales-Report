@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "4d70b40ece3a65bc30ac",
+  "name": "a1567f59170b54e03d8d",
   "position": {
     "x": 20,
-    "y": 341.25,
-    "z": 7000,
-    "height": 66.25,
+    "y": 175,
+    "z": 5000,
+    "height": 151.25,
     "width": 226.25,
-    "tabOrder": 9000
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_geo"
+                      "Entity": "Calendar"
                     }
                   },
-                  "Property": "Region"
+                  "Property": "Year"
                 }
               },
-              "queryRef": "dim_geo.Region",
-              "nativeQueryRef": "Region",
+              "queryRef": "Calendar.Year",
+              "nativeQueryRef": "Year",
               "active": true
             }
           ]
@@ -37,7 +37,15 @@
     "objects": {
       "general": [
         {
-          "properties": {}
+          "properties": {
+            "orientation": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
         }
       ],
       "data": [
@@ -46,7 +54,7 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dropdown'"
+                  "Value": "'Basic'"
                 }
               }
             }
@@ -61,8 +69,8 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 9,
-                      "Percent": -0.25
+                      "ColorId": 1,
+                      "Percent": 0
                     }
                   }
                 }
@@ -92,7 +100,7 @@
       ]
     },
     "syncGroup": {
-      "groupName": "Region",
+      "groupName": "Year",
       "fieldChanges": true,
       "filterChanges": true
     },

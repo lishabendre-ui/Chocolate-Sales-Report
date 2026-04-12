@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "067552f409c443f0f299",
+  "name": "1992d794d370ba00953a",
   "position": {
     "x": 8.75,
-    "y": 11.25,
-    "z": 3000,
-    "height": 140,
+    "y": 60,
+    "z": 2000,
+    "height": 630,
     "width": 250,
-    "tabOrder": 0
+    "tabOrder": 11000
   },
   "visual": {
     "visualType": "shape",
@@ -38,31 +38,18 @@
           }
         }
       ],
-      "text": [
+      "fill": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        },
-        {
-          "properties": {
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Chocolate Sales Report- Executive Summary'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "18D"
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
                 }
               }
             }
@@ -72,24 +59,31 @@
           }
         }
       ],
-      "fill": [
+      "outline": [
         {
           "properties": {
-            "fillColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 3,
-                      "Percent": 0
-                    }
-                  }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
-          },
-          "selector": {
-            "id": "default"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
           }
         }
       ]

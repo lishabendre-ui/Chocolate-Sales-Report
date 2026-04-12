@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "4d70b40ece3a65bc30ac",
+  "name": "7e2688ac8dcd2a19016c",
   "position": {
     "x": 20,
-    "y": 341.25,
-    "z": 7000,
-    "height": 66.25,
+    "y": 432.5,
+    "z": 9000,
+    "height": 67.5,
     "width": 226.25,
-    "tabOrder": 9000
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_geo"
+                      "Entity": "dim_products"
                     }
                   },
-                  "Property": "Region"
+                  "Property": "Category"
                 }
               },
-              "queryRef": "dim_geo.Region",
-              "nativeQueryRef": "Region",
+              "queryRef": "dim_products.Category",
+              "nativeQueryRef": "Category",
               "active": true
             }
           ]
@@ -61,8 +61,8 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 9,
-                      "Percent": -0.25
+                      "ColorId": 1,
+                      "Percent": 0
                     }
                   }
                 }
@@ -92,7 +92,7 @@
       ]
     },
     "syncGroup": {
-      "groupName": "Region",
+      "groupName": "Category",
       "fieldChanges": true,
       "filterChanges": true
     },
