@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "fb2b2910d6ce50d911bc",
   "position": {
-    "x": 282.5,
-    "y": 447.5,
-    "z": 9004,
-    "height": 242.5,
-    "width": 997.5,
-    "tabOrder": 9004
+    "x": 282.85714285714289,
+    "y": 448.57142857142861,
+    "z": 13000,
+    "height": 227.14285714285717,
+    "width": 958.57142857142867,
+    "tabOrder": 12000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -48,21 +48,6 @@
               "queryRef": "dim_products.Category",
               "nativeQueryRef": "Category",
               "active": true
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_products"
-                    }
-                  },
-                  "Property": "Sub_Category"
-                }
-              },
-              "queryRef": "dim_products.Sub_Category",
-              "nativeQueryRef": "Sub_Category",
-              "active": false
             }
           ]
         },
@@ -104,40 +89,16 @@
                       "Entity": "fact_sales"
                     }
                   },
-                  "Property": "Profit Margin Per"
+                  "Property": "Profits Margin %"
                 }
               },
               "queryRef": "fact_sales.Profit Margin Per",
-              "nativeQueryRef": "Profit Margin Per"
+              "nativeQueryRef": "Profits Margin %"
             }
           ]
         }
       }
     },
-    "expansionStates": [
-      {
-        "roles": [
-          "Rows"
-        ],
-        "levels": [
-          {
-            "queryRefs": [
-              "dim_products.Category"
-            ],
-            "isCollapsed": true,
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "dim_products.Sub_Category"
-            ],
-            "isCollapsed": true,
-            "isPinned": true
-          }
-        ],
-        "root": {}
-      }
-    ],
     "objects": {
       "values": [
         {
@@ -157,7 +118,7 @@
                               "Entity": "fact_sales"
                             }
                           },
-                          "Property": "Profit Margin Per"
+                          "Property": "Profits Margin %"
                         }
                       },
                       "FillRule": {
@@ -210,6 +171,13 @@
               "expr": {
                 "Literal": {
                   "Value": "10D"
+                }
+              }
+            },
+            "applyToHeaders": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -288,7 +256,27 @@
           }
         },
         {
-          "properties": {},
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Right'"
+                }
+              }
+            }
+          },
           "selector": {
             "metadata": "fact_sales.Profit Margin Per"
           }
@@ -327,6 +315,19 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnTotal": [
+        {
+          "properties": {
+            "applyToHeaders": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -395,93 +396,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "4a731fb6519559981828",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_products"
-              }
-            },
-            "Property": "Category"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "8621431252075dcd9ea9",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_products"
-              }
-            },
-            "Property": "Sub_Category"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "00896a729dd388a51055",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Calendar"
-              }
-            },
-            "Property": "Quarter"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "13cdb52f989ad4423265",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_sales"
-              }
-            },
-            "Property": "Total Sales"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "998dde7eb78a026a8da5",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_sales"
-              }
-            },
-            "Property": "Total Profit"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "874b7f9080458805aba4",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_sales"
-              }
-            },
-            "Property": "Profit Margin Per"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

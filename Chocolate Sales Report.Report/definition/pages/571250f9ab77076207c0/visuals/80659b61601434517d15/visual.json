@@ -4,10 +4,10 @@
   "position": {
     "x": 781.25,
     "y": 2.5,
-    "z": 9006,
+    "z": 2000,
     "height": 211.25,
     "width": 242.5,
-    "tabOrder": 9006
+    "tabOrder": 14000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "fact_sales"
                     }
                   },
-                  "Property": "Profit Margin Per"
+                  "Property": "Return Rate %"
                 }
               },
-              "queryRef": "fact_sales.Profit Margin Per",
-              "nativeQueryRef": "Profit Margin Per"
+              "queryRef": "fact_sales.Return Rate %",
+              "nativeQueryRef": "Return Rate %"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "fact_sales"
                   }
                 },
-                "Property": "Profit Margin Per"
+                "Property": "Return Rate %"
               }
             },
             "direction": "Descending"
@@ -307,34 +307,6 @@
           "selector": {
             "id": "default"
           }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fact_sales"
-                    }
-                  },
-                  "Property": "YoY Growth %"
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 0
-                }
-              }
-            ],
-            "metadata": "fact_sales.Profit Margin Per",
-            "id": "field-993b2809-5317-a58d-088b-9ffb1b37781d",
-            "order": 0
-          }
         }
       ],
       "referenceLabelLayout": [
@@ -364,48 +336,6 @@
           },
           "selector": {
             "id": "default"
-          }
-        }
-      ],
-      "referenceLabelTitle": [
-        {
-          "properties": {
-            "titleFontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "fact_sales.Profit Margin Per"
-          }
-        }
-      ],
-      "referenceLabelValue": [
-        {
-          "properties": {
-            "valueFontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 4,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "fact_sales.Profit Margin Per"
           }
         }
       ]
@@ -457,23 +387,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "64d4c00a3dad74150b46",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_sales"
-              }
-            },
-            "Property": "Profit Margin Per"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -67,6 +67,17 @@
           "type": "BaseTheme"
         }
       ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "ChocoWorks_Logo9483986961591094.png",
+          "path": "ChocoWorks_Logo9483986961591094.png",
+          "type": "Image"
+        }
+      ]
     }
   ],
   "settings": {

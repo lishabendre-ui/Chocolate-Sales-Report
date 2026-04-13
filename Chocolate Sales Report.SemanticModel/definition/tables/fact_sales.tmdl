@@ -1,7 +1,7 @@
 table fact_sales
 	lineageTag: 903815d8-f08c-4c4d-a2b7-c97090bbbc7b
 
-	measure 'Total Sales' = SUM(fact_sales[Amount])
+	measure 'Total Sales' = SUM(fact_sales[Selling Amount])
 		displayFolder: Core DAX Measures
 		lineageTag: fa149bef-d873-4d83-902e-33f50fe1fd8f
 
@@ -13,11 +13,10 @@ table fact_sales
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Profit Margin Per' = DIVIDE([Total Profit], [Total Sales], 0)
+	measure 'Profits Margin %' = DIVIDE(fact_sales[Total Profit], [Total Sales], 0)
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Core DAX Measures
 		lineageTag: bf7dff2e-7a6f-47b9-9b77-b3360953720e
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Total Boxes' = SUM(fact_sales[Boxes])
 		formatString: 0
@@ -29,17 +28,16 @@ table fact_sales
 		displayFolder: Core DAX Measures
 		lineageTag: 892ddc9a-d607-4d60-a9d3-117def08cdf0
 
-	measure 'Avg Sale Value' = AVERAGE(fact_sales[Amount])
+	measure 'Avg Sale Value' = AVERAGE(fact_sales[Selling Amount])
 		displayFolder: Core DAX Measures
 		lineageTag: 79129c35-4799-4181-8455-61f602da547a
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Return Rate %' = DIVIDE(SUM(fact_sales[Units_Returned]), [Total Boxes], 0)
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Core DAX Measures
 		lineageTag: fedc1f7b-bbc3-4d73-9459-c7f0d778c5aa
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'YTD Sales' = TOTALYTD([Total Sales],'Calendar'[Date])
 		displayFolder: Core DAX Measures
@@ -54,10 +52,9 @@ table fact_sales
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'YoY Growth %' = DIVIDE([Total Sales]-fact_sales[Sales Last Year (same period)],fact_sales[Sales Last Year (same period)],0)
+		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: Core DAX Measures
 		lineageTag: d5cdb5c2-1165-43a0-b90d-c321ca092524
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'MTD Sales' = TOTALMTD([Total Sales],'Calendar'[Date])
 		displayFolder: Core DAX Measures
@@ -97,6 +94,17 @@ table fact_sales
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Total Cost' = SUM(fact_sales[Cost])
+		displayFolder: Core DAX Measures
+		lineageTag: 5495bc43-b341-479d-87f8-82804eaf16b8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Profit amount' = [Total Sales]-[Total Cost]
+		lineageTag: 302b2c34-e7cd-4f37-a8ae-e581e1cd0e5d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column Sale_ID
 		dataType: string
 		lineageTag: b99a4ba1-b3a4-48f1-8f5c-a9a7486ee3b8
@@ -116,12 +124,12 @@ table fact_sales
 
 		annotation UnderlyingDateTimeDataType = Date
 
-	column Amount
+	column 'Selling Amount'
 		dataType: double
 		formatString: 0
 		lineageTag: 3be00daf-3269-43e1-8209-9ca67e4e124e
 		summarizeBy: sum
-		sourceColumn: Amount
+		sourceColumn: Selling Amount
 
 		annotation SummarizationSetBy = Automatic
 
@@ -202,12 +210,20 @@ table fact_sales
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Profit Margin %' = DIVIDE(fact_sales[Profit],fact_sales[Amount],0)
+	column 'Profit Margin %' = DIVIDE([Total Profit amount],[Total Sales])
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: e8fe0272-78dc-4b4d-aee1-f8ef71f3c3d4
 		summarizeBy: sum
 
 		annotation SummarizationSetBy = Automatic
+
+	column 'Actual Profit amount' = fact_sales[Selling Amount]-fact_sales[Cost]
+		lineageTag: b872862d-69ad-49a5-babd-25f7dc6bb308
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition fact_sales = m
 		mode: import
@@ -222,9 +238,10 @@ table fact_sales
 				    #"Filtered Rows1" = Table.SelectRows(#"Removed Duplicates", each [Amount] >= MinSalesThreshold),
 				    #"Filtered Rows2" = Table.SelectRows(#"Filtered Rows1", each [Amount] <> null and [Amount] <> ""),
 				    #"Filtered Rows3" = Table.SelectRows(#"Filtered Rows2", each [Amount] >= MinSalesThreshold),
-				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows3",{"Profit Margin %"})
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows3",{"Profit Margin %"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"Amount", "Selling Amount"}, {"Cost", "Cost"}})
 				in
-				    #"Removed Columns"
+				    #"Renamed Columns"
 
 	annotation PBI_ResultType = Table
 

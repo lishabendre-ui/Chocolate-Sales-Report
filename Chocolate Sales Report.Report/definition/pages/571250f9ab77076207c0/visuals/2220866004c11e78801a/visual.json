@@ -4,7 +4,7 @@
   "position": {
     "x": 1178.8888888888889,
     "y": 690,
-    "z": 7000,
+    "z": 15000,
     "height": 30,
     "width": 101.11111111111111,
     "tabOrder": 1000
@@ -186,7 +186,7 @@
             "navigationSection": {
               "expr": {
                 "Literal": {
-                  "Value": "'571250f9ab77076207c0'"
+                  "Value": "'59746934802bbbdc3c8e'"
                 }
               }
             }

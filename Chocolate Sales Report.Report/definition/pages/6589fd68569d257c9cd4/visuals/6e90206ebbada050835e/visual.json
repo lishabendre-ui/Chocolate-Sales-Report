@@ -4,10 +4,10 @@
   "position": {
     "x": 270,
     "y": 25,
-    "z": 12000,
+    "z": 11000,
     "height": 156.25,
     "width": 972.5,
-    "tabOrder": 16001
+    "tabOrder": 11000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -51,7 +51,7 @@
                       "Entity": "fact_sales"
                     }
                   },
-                  "Property": "Profit Margin Per"
+                  "Property": "Profits Margin %"
                 }
               },
               "queryRef": "fact_sales.Profit Margin Per",
@@ -361,65 +361,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "e315768be7de9bc39cc3",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_sales"
-              }
-            },
-            "Property": "Profit Margin Per"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "25bf61673cb4935a6743",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_sales"
-              }
-            },
-            "Property": "Total Sales"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "0e7f81243690dee2399d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_sales"
-              }
-            },
-            "Property": "Total Profit"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "4a18ac7079729b3600d5",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_sales"
-              }
-            },
-            "Property": "YoY Growth %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

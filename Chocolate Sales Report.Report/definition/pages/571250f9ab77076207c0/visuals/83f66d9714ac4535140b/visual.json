@@ -4,10 +4,10 @@
   "position": {
     "x": 282.5,
     "y": 2.5,
-    "z": 9001,
+    "z": 1000,
     "height": 211.25,
     "width": 256.25,
-    "tabOrder": 9001
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -588,23 +588,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "2a5dbb80e42283a00097",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_sales"
-              }
-            },
-            "Property": "Total Sales"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

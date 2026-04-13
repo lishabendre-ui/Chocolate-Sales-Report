@@ -4,10 +4,10 @@
   "position": {
     "x": 270,
     "y": 202.5,
-    "z": 4000,
+    "z": 3000,
     "height": 288.75,
     "width": 527.5,
-    "tabOrder": 3000
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "columnChart",
@@ -170,75 +170,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "34b9f45e6456e98ebcb1",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Calendar"
-                  }
-                },
-                "Hierarchy": "Year Hierarchy"
-              }
-            },
-            "Level": "Year"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "a687f5cfc1a09dd2e7a0",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Calendar"
-                  }
-                },
-                "Hierarchy": "Year Hierarchy"
-              }
-            },
-            "Level": "Quarter"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "99e3777ea2ac0b6de5ed",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_sales"
-              }
-            },
-            "Property": "Total Sales"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "82fdf2f9509306249343",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_sales"
-              }
-            },
-            "Property": "Sales Last Year (same period)"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

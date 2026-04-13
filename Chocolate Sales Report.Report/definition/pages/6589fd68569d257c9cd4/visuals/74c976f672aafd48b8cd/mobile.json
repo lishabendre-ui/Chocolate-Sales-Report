@@ -32,11 +32,30 @@
                 "Value": "17.733428955078125D"
               }
             }
+          },
+          "autoZoomIncludesReferenceLayer": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
           }
         }
       }
     ],
-    "bubbleLayer": [],
+    "bubbleLayer": [
+      {
+        "properties": {
+          "markerRangeType": {
+            "expr": {
+              "Literal": {
+                "Value": "'scatterDeprecated'"
+              }
+            }
+          }
+        }
+      }
+    ],
     "categoryLabels": [],
     "legend": []
   }

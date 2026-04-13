@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "69f89496e21cb618a565",
   "position": {
-    "x": 8.75,
-    "y": 11.25,
-    "z": 1000,
-    "height": 140,
-    "width": 250,
+    "x": 8.5714285714285712,
+    "y": 104.28571428571429,
+    "z": 5000,
+    "height": 47.142857142857146,
+    "width": 250.00000000000003,
     "tabOrder": 0
   },
   "visual": {
@@ -55,7 +55,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Chocolate Sales Report- Executive Summary'"
+                  "Value": "'Product Analysis'"
                 }
               }
             },
@@ -80,8 +80,8 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 3,
-                      "Percent": 0
+                      "ColorId": 7,
+                      "Percent": -0.5
                     }
                   }
                 }

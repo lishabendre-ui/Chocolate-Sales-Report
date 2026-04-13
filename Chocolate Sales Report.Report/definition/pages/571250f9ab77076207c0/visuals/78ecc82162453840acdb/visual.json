@@ -4,10 +4,10 @@
   "position": {
     "x": 727.5,
     "y": 215,
-    "z": 9003,
+    "z": 12000,
     "height": 222.5,
     "width": 513.75,
-    "tabOrder": 9003
+    "tabOrder": 11000
   },
   "visual": {
     "visualType": "waterfallChart",
@@ -97,6 +97,19 @@
             }
           }
         }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -154,37 +167,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "9f798b13c9c42db6b750",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dim_products"
-              }
-            },
-            "Property": "Category"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "1abc3fdbc7169e2770aa",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_sales"
-              }
-            },
-            "Property": "Total Profit"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

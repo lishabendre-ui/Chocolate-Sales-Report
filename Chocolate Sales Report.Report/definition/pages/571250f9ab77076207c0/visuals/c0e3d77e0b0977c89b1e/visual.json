@@ -4,10 +4,10 @@
   "position": {
     "x": 538.75,
     "y": 2.5,
-    "z": 9005,
+    "z": 0,
     "height": 211.25,
     "width": 242.5,
-    "tabOrder": 9005
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "fact_sales"
                     }
                   },
-                  "Property": "Profit Margin Per"
+                  "Property": "Profits Margin %"
                 }
               },
               "queryRef": "fact_sales.Profit Margin Per",
-              "nativeQueryRef": "Profit Margin Per"
+              "nativeQueryRef": "Profits Margin %"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "fact_sales"
                   }
                 },
-                "Property": "Profit Margin Per"
+                "Property": "Profits Margin %"
               }
             },
             "direction": "Descending"
@@ -335,6 +335,20 @@
             "id": "field-993b2809-5317-a58d-088b-9ffb1b37781d",
             "order": 0
           }
+        },
+        {
+          "properties": {
+            "rectangleRoundedCurveLeftTop": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fact_sales.Profit Margin Per"
+          }
         }
       ],
       "referenceLabelLayout": [
@@ -457,23 +471,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "99c1193727869c423768",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fact_sales"
-              }
-            },
-            "Property": "Profit Margin Per"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }
