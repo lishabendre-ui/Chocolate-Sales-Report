@@ -1,6 +1,83 @@
 table dim_salesperson
 	lineageTag: c3366492-6fd5-4c58-aea5-a6967de01bc4
 
+	measure 'Selected Person' =
+			
+			SELECTEDVALUE(
+			    dim_salesperson[Sales_Person],
+			    "All Sales Persons"
+			)
+			
+			-- Shows the drilled salesperson's name
+		displayFolder: Dynamic profile labels
+		lineageTag: bbcb3798-5d4d-44ac-b2f7-ed203cafb565
+
+	measure 'Selected Team' =
+			
+			SELECTEDVALUE(
+			    dim_salesperson[Team],
+			    "All Teams"
+			)
+			
+			
+			-- Shows the team of the selected person
+		displayFolder: Dynamic profile labels
+		lineageTag: d84a2c7f-2a91-4835-aef6-1abd0cbc635e
+
+	measure 'Selected Location' =
+			
+			SELECTEDVALUE(
+			    dim_salesperson[Location],
+			    "Multiple Locations"
+			)
+			
+			
+			-- Shows location
+		displayFolder: Dynamic profile labels
+		lineageTag: 1803d6b7-19ff-47ff-9b03-4e37b6ffc31d
+
+	measure 'Target Achievement %' =
+			
+			DIVIDE(
+			    [Total Sales],
+			    [Total Target],
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Dynamic profile labels
+		lineageTag: 55fbb142-4f5f-4c25-ab2e-581a88d76d61
+
+	measure 'Achievement Variance' =
+			
+			VAR Gap = [Sales Variance]
+			RETURN
+			IF(
+			    Gap >= 0,
+			    "+" & FORMAT(Gap, "$#,0") & " above target",
+			    FORMAT(Gap, "$#,0") & " below target"
+			)
+		displayFolder: Dynamic profile labels
+		lineageTag: bb347d82-6872-4040-adfe-6b75cd5b7eb3
+
+	measure Measure
+		displayFolder: Dynamic profile labels
+		lineageTag: 05a6045f-3a79-4502-b9fa-7c48954b077e
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Gauge Max' =
+			
+			CALCULATE(
+			    SUM(fact_targets[Target_Amount]),
+			    ALLEXCEPT(fact_targets, dim_salesperson[Sales_Person])
+			) * 1.2
+			
+			 -- 20% headroom so gauge doesn't cap out
+		displayFolder: Dynamic profile labels
+		lineageTag: 88695f1d-5ecd-4a69-b224-37fa5e05c281
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column SP_ID
 		dataType: string
 		lineageTag: 8dde748b-3e30-4743-9b80-58aa5ad056b5

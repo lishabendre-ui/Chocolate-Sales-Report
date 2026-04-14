@@ -2,10 +2,9 @@ table fact_sales
 	lineageTag: 903815d8-f08c-4c4d-a2b7-c97090bbbc7b
 
 	measure 'Total Sales' = SUM(fact_sales[Selling Amount])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Core DAX Measures
 		lineageTag: fa149bef-d873-4d83-902e-33f50fe1fd8f
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Total Profit' = SUM(fact_sales[Profit])
 		displayFolder: Core DAX Measures
@@ -29,10 +28,9 @@ table fact_sales
 		lineageTag: 892ddc9a-d607-4d60-a9d3-117def08cdf0
 
 	measure 'Avg Sale Value' = AVERAGE(fact_sales[Selling Amount])
+		formatString: #,0.00\ "€";-#,0.00\ "€";#,0.00\ "€"
 		displayFolder: Core DAX Measures
 		lineageTag: 79129c35-4799-4181-8455-61f602da547a
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Return Rate %' = DIVIDE(SUM(fact_sales[Units_Returned]), [Total Boxes], 0)
 		formatString: 0.00%;-0.00%;0.00%

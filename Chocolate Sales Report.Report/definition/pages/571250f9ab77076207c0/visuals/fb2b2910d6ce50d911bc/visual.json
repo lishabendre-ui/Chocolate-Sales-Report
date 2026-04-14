@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "fb2b2910d6ce50d911bc",
   "position": {
-    "x": 282.85714285714289,
-    "y": 448.57142857142861,
+    "x": 282.63959390862942,
+    "y": 448.32487309644671,
     "z": 13000,
-    "height": 227.14285714285717,
-    "width": 958.57142857142867,
+    "height": 227.41116751269035,
+    "width": 619.424703891709,
     "tabOrder": 12000
   },
   "visual": {
@@ -61,20 +61,6 @@
                       "Entity": "fact_sales"
                     }
                   },
-                  "Property": "Total Sales"
-                }
-              },
-              "queryRef": "fact_sales.Total Sales",
-              "nativeQueryRef": "Total Sales"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fact_sales"
-                    }
-                  },
                   "Property": "Total Profit"
                 }
               },
@@ -89,79 +75,37 @@
                       "Entity": "fact_sales"
                     }
                   },
-                  "Property": "Profits Margin %"
+                  "Property": "Total Sales"
                 }
               },
-              "queryRef": "fact_sales.Profit Margin Per",
-              "nativeQueryRef": "Profits Margin %"
+              "queryRef": "fact_sales.Total Sales",
+              "nativeQueryRef": "Total Sales"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fact_sales"
+                  }
+                },
+                "Property": "Total Profit"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
       }
     },
     "objects": {
       "values": [
         {
           "properties": {}
-        },
-        {
-          "properties": {
-            "backColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "FillRule": {
-                      "Input": {
-                        "Measure": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "fact_sales"
-                            }
-                          },
-                          "Property": "Profits Margin %"
-                        }
-                      },
-                      "FillRule": {
-                        "linearGradient2": {
-                          "min": {
-                            "color": {
-                              "Literal": {
-                                "Value": "'#86989C'"
-                              }
-                            }
-                          },
-                          "max": {
-                            "color": {
-                              "Literal": {
-                                "Value": "'#5B3D35'"
-                              }
-                            }
-                          },
-                          "nullColoringStrategy": {
-                            "strategy": {
-                              "Literal": {
-                                "Value": "'asZero'"
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "metadata": "fact_sales.Profit Margin Per"
-          }
         }
       ],
       "rowTotal": [
@@ -181,104 +125,6 @@
                 }
               }
             }
-          }
-        }
-      ],
-      "columnFormatting": [
-        {
-          "properties": {
-            "styleSubtotals": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1000000D"
-                }
-              }
-            },
-            "labelPrecision": {
-              "expr": {
-                "Literal": {
-                  "Value": "2L"
-                }
-              }
-            },
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Auto'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "fact_sales.Total Sales"
-          }
-        },
-        {
-          "properties": {
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1000000D"
-                }
-              }
-            },
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Center'"
-                }
-              }
-            },
-            "styleSubtotals": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "styleTotal": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "fact_sales.Total Profit"
-          }
-        },
-        {
-          "properties": {
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            },
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Right'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "fact_sales.Profit Margin Per"
           }
         }
       ],

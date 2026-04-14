@@ -1,52 +1,51 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "06929f0c2dc20ce300d8",
+  "name": "d8c922b43b5a8a6b3d75",
   "position": {
-    "x": 589.103214890017,
-    "y": 101.79357021996616,
-    "z": 2000,
-    "height": 351.94585448392553,
-    "width": 678.984771573604,
-    "tabOrder": 1000
+    "x": 20.45954045954046,
+    "y": 432.20779220779224,
+    "z": 14,
+    "height": 264.69530469530469,
+    "width": 386.17382617382617,
+    "tabOrder": 14
   },
   "visual": {
-    "visualType": "barChart",
+    "visualType": "gauge",
     "query": {
       "queryState": {
-        "Category": {
+        "MaxValue": {
           "projections": [
             {
               "field": {
-                "Column": {
+                "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_products"
+                      "Entity": "dim_salesperson"
                     }
                   },
-                  "Property": "Product"
+                  "Property": "Gauge Max"
                 }
               },
-              "queryRef": "dim_products.Product",
-              "nativeQueryRef": "Product",
-              "active": true
+              "queryRef": "dim_salesperson.Gauge Max",
+              "nativeQueryRef": "Gauge Max"
             }
           ]
         },
-        "Series": {
+        "TargetValue": {
           "projections": [
             {
               "field": {
-                "Column": {
+                "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Calendar"
+                      "Entity": "fact_targets"
                     }
                   },
-                  "Property": "Year"
+                  "Property": "Total Target"
                 }
               },
-              "queryRef": "Calendar.Year",
-              "nativeQueryRef": "Year"
+              "queryRef": "fact_targets.Total Target",
+              "nativeQueryRef": "Total Target"
             }
           ]
         },

@@ -43,9 +43,8 @@ table 'Advance Calculate'
 			)
 			
 			-- Sales % of total (for share analysis))
+		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 331de5a4-5b65-4844-b362-adf535917c1e
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Cumulative Sales' =
 			
@@ -63,6 +62,44 @@ table 'Advance Calculate'
 		lineageTag: 41a4d9ea-3e03-4740-ab32-81fd45b1f342
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Product Sales Share %' =
+			
+			DIVIDE(
+			    [Total Sales],
+			    CALCULATE([Total Sales], ALL(dim_products)),
+			    0
+			)
+			
+			-- Sales % share of selected product vs all products
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a138e9c2-bc1f-41c5-bbf4-067cd12c0144
+
+	measure 'Product Revenue Rank' =
+			
+			RANKX(
+			    ALL(dim_products[Product]),
+			    [Total Sales],
+			    ,
+			    DESC,
+			    DENSE
+			)
+			
+			
+			-- Rank product by revenue (1 = highest)
+		formatString: 0
+		lineageTag: d690c6ee-852d-451e-962d-e007e207660c
+
+	measure 'Category Profit Share %' =
+			
+			DIVIDE(
+			    [Total Profit],
+			    CALCULATE([Total Profit], ALL(dim_products[Category])),
+			    0
+			)
+			-- Category contribution to total profit
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 5d561847-7737-4b80-a3b1-e3d766403b49
 
 	column Value
 		lineageTag: 20f9a0f6-1b1f-45bd-a484-222061cd552a

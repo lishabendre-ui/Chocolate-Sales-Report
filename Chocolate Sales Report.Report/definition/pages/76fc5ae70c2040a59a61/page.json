@@ -42,7 +42,8 @@
           }
         }
       }
-    ]
+    ],
+    "referenceScope": "CrossReport"
   },
   "visibility": "HiddenInViewMode"
 }

@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_products"
+                      "Entity": "dim_salesperson"
                     }
                   },
-                  "Property": "Category"
+                  "Property": "Sales_Person"
                 }
               },
-              "queryRef": "dim_products.Category",
-              "nativeQueryRef": "Category",
+              "queryRef": "dim_salesperson.Sales_Person",
+              "nativeQueryRef": "Sales_Person",
               "active": true
             }
           ]
@@ -37,7 +37,49 @@
     "objects": {
       "general": [
         {
-          "properties": {}
+          "properties": {
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "d",
+                    "Entity": "dim_salesperson",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "d"
+                                }
+                              },
+                              "Property": "Sales_Person"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'Curtice Advani'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
         }
       ],
       "data": [

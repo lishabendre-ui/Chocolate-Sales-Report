@@ -1,0 +1,140 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "15390464b373b0a41d1b",
+  "position": {
+    "x": 597.76649746192891,
+    "y": 453.7394247038917,
+    "z": 4000,
+    "height": 247.98646362098137,
+    "width": 670.321489001692,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_products"
+                    }
+                  },
+                  "Property": "Product"
+                }
+              },
+              "queryRef": "dim_products.Product",
+              "nativeQueryRef": "Product"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Advance Calculate"
+                    }
+                  },
+                  "Property": "Product Revenue Rank"
+                }
+              },
+              "queryRef": "Advance Calculate.Product Revenue Rank",
+              "nativeQueryRef": "Product Revenue Rank"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_sales"
+                    }
+                  },
+                  "Property": "Profits Margin %"
+                }
+              },
+              "queryRef": "fact_sales.Profits Margin %",
+              "nativeQueryRef": "Profits Margin %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Advance Calculate"
+                    }
+                  },
+                  "Property": "Sales % of Total"
+                }
+              },
+              "queryRef": "Advance Calculate.Sales % of Total",
+              "nativeQueryRef": "Sales % of Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_sales"
+                    }
+                  },
+                  "Property": "Return Rate %"
+                }
+              },
+              "queryRef": "fact_sales.Return Rate %",
+              "nativeQueryRef": "Return Rate %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_sales"
+                    }
+                  },
+                  "Property": "Avg Sale Value"
+                }
+              },
+              "queryRef": "fact_sales.Avg Sale Value",
+              "nativeQueryRef": "Avg Sale Value"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Advance Calculate"
+                  }
+                },
+                "Property": "Product Revenue Rank"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Condensed'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

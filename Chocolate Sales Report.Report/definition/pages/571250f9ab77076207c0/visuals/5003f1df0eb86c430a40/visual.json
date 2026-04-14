@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "06929f0c2dc20ce300d8",
+  "name": "5003f1df0eb86c430a40",
   "position": {
-    "x": 589.103214890017,
-    "y": 101.79357021996616,
-    "z": 2000,
-    "height": 351.94585448392553,
-    "width": 678.984771573604,
-    "tabOrder": 1000
+    "x": 914,
+    "y": 448,
+    "z": 20000,
+    "height": 227,
+    "width": 328,
+    "tabOrder": 20000
   },
   "visual": {
-    "visualType": "barChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -32,24 +32,6 @@
             }
           ]
         },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Calendar"
-                    }
-                  },
-                  "Property": "Year"
-                }
-              },
-              "queryRef": "Calendar.Year",
-              "nativeQueryRef": "Year"
-            }
-          ]
-        },
         "Y": {
           "projections": [
             {
@@ -57,14 +39,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fact_sales"
+                      "Entity": "Advance Calculate"
                     }
                   },
-                  "Property": "Total Sales"
+                  "Property": "Product Sales Share %"
                 }
               },
-              "queryRef": "fact_sales.Total Sales",
-              "nativeQueryRef": "Total Sales"
+              "queryRef": "Advance Calculate.Product Sales Share %",
+              "nativeQueryRef": "Product Sales Share %"
             }
           ]
         }
@@ -76,10 +58,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fact_sales"
+                    "Entity": "Advance Calculate"
                   }
                 },
-                "Property": "Total Sales"
+                "Property": "Product Sales Share %"
               }
             },
             "direction": "Descending"
@@ -87,6 +69,26 @@
         ],
         "isDefaultSort": true
       }
+    },
+    "objects": {
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": -0.25
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }
