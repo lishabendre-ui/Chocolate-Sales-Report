@@ -65,7 +65,8 @@
                 }
               },
               "queryRef": "fact_sales.Total Profit",
-              "nativeQueryRef": "Total Profit"
+              "nativeQueryRef": "Total Profit",
+              "format": "\"€\" #,0.###############;\"€\" -#,0.###############;\"€\" #,0.###############"
             },
             {
               "field": {
@@ -79,7 +80,8 @@
                 }
               },
               "queryRef": "fact_sales.MTD Sales",
-              "nativeQueryRef": "MTD Sales"
+              "nativeQueryRef": "MTD Sales",
+              "format": "\"€\" #,0.###############;\"€\" -#,0.###############;\"€\" #,0.###############"
             },
             {
               "field": {
@@ -93,7 +95,8 @@
                 }
               },
               "queryRef": "fact_sales.QTD Sales",
-              "nativeQueryRef": "QTD Sales"
+              "nativeQueryRef": "QTD Sales",
+              "format": "\"€\" #,0.###############;\"€\" -#,0.###############;\"€\" #,0.###############"
             },
             {
               "field": {
@@ -107,7 +110,8 @@
                 }
               },
               "queryRef": "fact_sales.YTD Sales",
-              "nativeQueryRef": "YTD Sales"
+              "nativeQueryRef": "YTD Sales",
+              "format": "\"€\" #,0.###############;\"€\" -#,0.###############;\"€\" #,0.###############"
             },
             {
               "field": {
@@ -121,7 +125,8 @@
                 }
               },
               "queryRef": "fact_sales.YoY Growth %",
-              "nativeQueryRef": "YoY Growth %"
+              "nativeQueryRef": "YoY Growth %",
+              "format": "0.00%;-0.00%;0.00%"
             }
           ]
         }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "d71a5ddb041d70d3dd73",
   "position": {
-    "x": 10.22977022977023,
-    "y": 89.510489510489521,
-    "z": 6,
-    "height": 125.31468531468532,
-    "width": 1259.5404595404596,
-    "tabOrder": 6
+    "x": 296.73870333988214,
+    "y": 13.831041257367387,
+    "z": 5000,
+    "height": 110.6483300589391,
+    "width": 944.28290766208249,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -30,9 +30,6 @@
               "nativeQueryRef": "Selected Person"
             }
           ]
-        },
-        "Rows": {
-          "projections": []
         }
       }
     },

@@ -7,10 +7,9 @@ table fact_sales
 		lineageTag: fa149bef-d873-4d83-902e-33f50fe1fd8f
 
 	measure 'Total Profit' = SUM(fact_sales[Profit])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		displayFolder: Core DAX Measures
 		lineageTag: 9eb1a631-59ae-44e2-8146-c48903fbf78a
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Profits Margin %' = DIVIDE(fact_sales[Total Profit], [Total Sales], 0)
 		formatString: 0.00%;-0.00%;0.00%
@@ -102,6 +101,29 @@ table fact_sales
 		lineageTag: 302b2c34-e7cd-4f37-a8ae-e581e1cd0e5d
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Monthly Sales' =
+			
+			CALCULATE(
+			    [Total Sales],
+			    DATESMTD(Calendar[Date])
+			)
+		displayFolder: Core DAX Measures
+		lineageTag: 5cbf6ccb-022b-46a6-9d83-57e7d9f635be
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Monthly Target MTD' = ```
+			
+			CALCULATE(
+			    SUM(fact_targets[Target_Amount]),
+			    DATESMTD(Calendar[Date])
+			)
+			
+			```
+		formatString: 0
+		displayFolder: Core DAX Measures
+		lineageTag: ba3991ba-2e30-4a2d-9318-1d4d8ae225e1
 
 	column Sale_ID
 		dataType: string

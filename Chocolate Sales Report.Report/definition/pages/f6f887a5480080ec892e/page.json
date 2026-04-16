@@ -8,7 +8,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "c3a66bcc265c659838b3",
+        "name": "5c9df30212ec760ba603",
         "field": {
           "Column": {
             "Expression": {
@@ -20,49 +20,10 @@
           }
         },
         "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "d",
-              "Entity": "dim_salesperson",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "In": {
-                  "Expressions": [
-                    {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Source": "d"
-                          }
-                        },
-                        "Property": "Sales_Person"
-                      }
-                    }
-                  ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "'Curtice Advani'"
-                        }
-                      }
-                    ]
-                  ]
-                }
-              }
-            }
-          ]
-        },
         "howCreated": "Drillthrough"
       },
       {
-        "name": "cf565be06e4882e0044d",
+        "name": "49eb6c1aa538776e4879",
         "field": {
           "Column": {
             "Expression": {
@@ -79,14 +40,12 @@
     ]
   },
   "pageBinding": {
-    "name": "902aa03167a6dcac2204",
+    "name": "3545e0f52e7398589b00",
     "type": "Drillthrough",
     "parameters": [
       {
-        "name": "ccd9d2e0b87d4498ba22",
-        "boundFilter": "c3a66bcc265c659838b3",
-        "asAggregation": false,
-        "qnaSingleSelectRequired": false,
+        "name": "405a3dc4b2d7b20c32e5",
+        "boundFilter": "5c9df30212ec760ba603",
         "fieldExpr": {
           "Column": {
             "Expression": {
@@ -99,8 +58,8 @@
         }
       },
       {
-        "name": "13170954ba015b80c900",
-        "boundFilter": "cf565be06e4882e0044d",
+        "name": "59972ad1a2560974009d",
+        "boundFilter": "49eb6c1aa538776e4879",
         "asAggregation": false,
         "qnaSingleSelectRequired": false,
         "fieldExpr": {
@@ -115,5 +74,6 @@
         }
       }
     ]
-  }
+  },
+  "visibility": "HiddenInViewMode"
 }

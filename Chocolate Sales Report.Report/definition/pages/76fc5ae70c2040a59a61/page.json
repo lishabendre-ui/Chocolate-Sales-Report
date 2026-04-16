@@ -21,6 +21,21 @@
         },
         "type": "Categorical",
         "howCreated": "Drillthrough"
+      },
+      {
+        "name": "123204320610e0be9c23",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_products"
+              }
+            },
+            "Property": "Category"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
       }
     ]
   },
@@ -39,6 +54,22 @@
               }
             },
             "Property": "Product"
+          }
+        }
+      },
+      {
+        "name": "ece3e96aee55717a2bb8",
+        "boundFilter": "123204320610e0be9c23",
+        "asAggregation": false,
+        "qnaSingleSelectRequired": false,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_products"
+              }
+            },
+            "Property": "Category"
           }
         }
       }

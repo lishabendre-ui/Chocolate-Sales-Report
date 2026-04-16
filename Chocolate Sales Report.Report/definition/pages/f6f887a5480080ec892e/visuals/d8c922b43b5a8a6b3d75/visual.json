@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "d8c922b43b5a8a6b3d75",
   "position": {
-    "x": 20.45954045954046,
-    "y": 432.20779220779224,
-    "z": 14,
-    "height": 264.69530469530469,
-    "width": 386.17382617382617,
-    "tabOrder": 14
+    "x": 28.919449901768175,
+    "y": 251.47347740667976,
+    "z": 7000,
+    "height": 215.00982318271122,
+    "width": 394.81335952848724,
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "gauge",
@@ -86,6 +86,54 @@
         ],
         "isDefaultSort": true
       }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sales Target'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "6D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "divider": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }
